@@ -20,6 +20,9 @@ endif
 
 build_dir = 'tmp/_output'
 
+meow:
+	@echo \* Meow
+
 compile:
 	make clean
 	go build -o tmp/_output/bin ./cmd/kubedirector
@@ -183,6 +186,7 @@ clean:
 	-rm -f deploy/kubedirector/rbac.yaml
 	-rm -f deploy/kubedirector/deployment-localbuilt.yaml
 	-rm -rf tmp/_output
+	make meow
 
 distclean: clean
 	-rm -rf vendor
@@ -190,4 +194,4 @@ distclean: clean
 $(build_dir):
 	@mkdir -p $@
 
-.PHONY: build push deploy redeploy undeploy teardown format dep clean distclean compile
+.PHONY: build push deploy redeploy undeploy teardown format dep clean distclean compile meow
